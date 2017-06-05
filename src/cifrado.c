@@ -70,6 +70,7 @@ char *cifradoAutollave(char *mensaje, char *llave){
 	int tamanioL = strlen(llave);
 	int tamanioM = strlen(mensaje);
 	int resta = tamanioM - tamanioL;
+	int suma = tamanioM - tamanioL;
 	int matriz[30][30] = {
 {'-','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'},
 {'A','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'},
@@ -113,7 +114,19 @@ char *cifradoAutollave(char *mensaje, char *llave){
 		}
 		
 	}
-	return encriptado2;
+	
+	for(k = 0; k < suma; k++) {
+		for(i = 0; i < tamanioM; i++) {
+			if(matriz[i][0] == mensaje[k]) {
+				for(j = 0; j < strlen(encriptado2); j++) {
+					if(matriz[0][j] == encriptado2[k]) {
+						palabra[k] = matriz[i][j];
+					}
+				}
+			}
+		}
+	}
+	return palabra;
 }
 
 
