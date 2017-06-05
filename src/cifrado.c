@@ -102,9 +102,15 @@ char *cifradoAutollave(char *mensaje, char *llave){
 	
 	for(i = 0; i < tamanioL; i++){
 		encriptado2[i] = toupper(llave[i]);
+		if (llave[i] == ' ') {
+			encriptado2[i] = ' ';
+		}
 	}
 	for(j = 0; j < resta; j++){
 		encriptado2[j+tamanioL] = toupper(mensaje[j]);
+		if (mensaje[i] == ' ') {
+			encriptado2[i] = ' ';
+		}
 		
 	}
 	return encriptado2;
